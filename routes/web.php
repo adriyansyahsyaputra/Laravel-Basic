@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\InputController;
+use App\Http\Controllers\ResponseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,9 @@ use App\Http\Controllers\InputController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('hello', [
+        "name" => "adriyansyah"
+    ]);
 });
 
 Route::get('/pzn', function() {
@@ -74,3 +77,11 @@ Route::post('/input/filter/except', [InputController::class, 'filterExcept']);
 Route::post('/input/filter/merge', [InputController::class, 'filterMerge']);
 
 Route::post('/file/upload', [FileController::class, 'upload']);
+
+Route::get('/response/hello', [ResponseController::class, 'response']);
+Route::get('/response/header', [ResponseController::class, 'header']);
+
+Route::get('/response/type/view', [ResponseController::class, 'responseView']);
+Route::get('/response/type/json', [ResponseController::class, 'responseJson']);
+Route::get('/response/type/file', [ResponseController::class, 'responseFile']);
+Route::get('/response/type/download', [ResponseController::class, 'responseDownload']);
