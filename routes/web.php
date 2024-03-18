@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\InputController;
 use App\Http\Middleware\ContohMiddleware;
@@ -109,3 +110,6 @@ Route::get('/middleware/api', function() {
 Route::get('/middleware/group', function() {
     return "GROUP";
 })->middleware(['pzn']);
+
+Route::get('/form', [FormController::class, 'form']);
+Route::get('/form', [FormController::class, 'submitForm']);
