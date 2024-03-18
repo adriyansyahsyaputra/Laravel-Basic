@@ -100,6 +100,11 @@ Route::get('/redirect/to', [RedirectController::class, 'redirectTo']);
 Route::get('/redirect/name', [RedirectController::class, 'redirectName']);
 Route::get('/redirect/name/{name}', [RedirectController::class, 'redirectHello'])
             ->name("redirect-hello");
+Route::get('/redirect/named', function() {
+    // return route('redirect-hello', ['name' => 'Adriyansyah']);
+    return URL::route('redirect-hello', ['name' => 'Adriyansyah']);
+});
+
 Route::get('/redirect/action', [RedirectController::class, 'redirectAction']);
 Route::get('/redirect/away', [RedirectController::class, 'redirectAway']);
 
@@ -111,5 +116,12 @@ Route::get('/middleware/group', function() {
     return "GROUP";
 })->middleware(['pzn']);
 
+Route::get('/url/action', function() {
+    return URL::action([FormController::class, 'form'], []);
+});
 Route::get('/form', [FormController::class, 'form']);
 Route::get('/form', [FormController::class, 'submitForm']);
+
+Route::get('/url/current', function() {
+    return URL::full();
+});
