@@ -7,6 +7,7 @@ use App\Http\Controllers\HelloController;
 use App\Http\Controllers\InputController;
 use App\Http\Middleware\ContohMiddleware;
 use App\Http\Controllers\CookieController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\ResponseController;
 
@@ -125,3 +126,6 @@ Route::get('/form', [FormController::class, 'submitForm']);
 Route::get('/url/current', function() {
     return URL::full();
 });
+
+Route::get('/session/create', [SessionController::class, 'createSession']);
+Route::get('/session/get', [SessionController::class, 'getSession']);
